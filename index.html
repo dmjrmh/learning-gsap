@@ -35,32 +35,56 @@
 		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 		<script>
 			gsap.registerPlugin(ScrollTrigger);
-			gsap.to(".box-c", {
+			// gsap.to(".box-c", {
+			// 	scrollTrigger: {
+			// 		trigger: ".box-c",
+			// 		// toggle actions available => play, pause, resume, restart, reverse, reset, complete, none
+			// 		// top end skipped
+			// 		scrub: true,
+			// 		toggleActions: "restart none none none",
+			// 	},
+			// 	x: 400,
+			// 	rotation: 360,
+			// 	durtaion: 3,
+			// 	markers: true,
+			// });
+
+			// gsap.to(".box-d", {
+			// 	scrollTrigger: {
+			// 		trigger: ".box-d",
+			// 		scrub: 2,
+			// 		toggleActions: "restart none none none",
+			// 	},
+			// 	x: 400,
+			// 	rotation: 360,
+			// 	durtaion: 3,
+			// 	markers: true,
+			// });
+
+			let tl = gsap.timeline({
 				scrollTrigger: {
 					trigger: ".box-c",
-					// toggle actions available => play, pause, resume, restart, reverse, reset, complete, none
-					// top end skipped
-					scrub: true,
-					toggleActions: "restart none none none",
+					start: "top center",
+					end: "top 100px",
+					scrub: 3,
+					markers: true,
 				},
+			});
+
+			tl.to(".box-c", {
 				x: 400,
 				rotation: 360,
-				durtaion: 3,
-				markers: true,
-			});
-			gsap.to(".box-d", {
-				scrollTrigger: {
-					trigger: ".box-d",
-					// toggle actions available => play, pause, resume, restart, reverse, reset, complete, none
-					// top end skipped
-					scrub: 2,
-					toggleActions: "restart none none none",
-				},
-				x: 400,
-				rotation: 360,
-				durtaion: 3,
-				markers: true,
-			});
+				ease: "none",
+				duration: 3,
+			})
+				.to(".box-c", {
+					backgroundColor: "purple",
+					duration: 1,
+				})
+				.to(".box-c", {
+					x: 0,
+					duration: 3,
+				});
 		</script>
 	</body>
 </html>
