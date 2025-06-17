@@ -6,15 +6,31 @@
 		<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 		<title>Learn GSAP</title>
 	</head>
-	<body>
+	<body class="bg-slate-900">
 		<div class="h-screen"></div>
-		<div class="box-a box w-8 h-8 bg-red-500 text-center font-medium mb-20">
+		<div
+			class="box-a box w-16 h-16 bg-red-500 text-center align-center font-medium mb-20 text-white content-center"
+		>
 			A
 		</div>
-		<div class="box-b box w-8 h-8 bg-green-500 text-center font-medium mb-20">
+		<div
+			class="box-b box w-16 h-16 bg-green-500 text-center font-medium mb-20 text-white content-center"
+		>
 			B
 		</div>
-		<div class="box-c box w-8 h-8 bg-blue-500 text-center font-medium">C</div>
+		<div class="relative">
+			<div
+				class="absolute top-0 box-c box w-16 h-16 bg-blue-500 text-center font-medium z-9999 text-white content-center"
+			>
+				C
+			</div>
+			<div
+				class="box-d box w-16 h-16 bg-gray-500 text-center font-medium z-1 text-white content-center"
+			>
+				C
+			</div>
+		</div>
+		<div class="h-screen"></div>
 		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 		<script>
@@ -23,11 +39,27 @@
 				scrollTrigger: {
 					trigger: ".box-c",
 					// toggle actions available => play, pause, resume, restart, reverse, reset, complete, none
+					// top end skipped
+					scrub: true,
 					toggleActions: "restart none none none",
 				},
 				x: 400,
 				rotation: 360,
 				durtaion: 3,
+				markers: true,
+			});
+			gsap.to(".box-d", {
+				scrollTrigger: {
+					trigger: ".box-d",
+					// toggle actions available => play, pause, resume, restart, reverse, reset, complete, none
+					// top end skipped
+					scrub: 2,
+					toggleActions: "restart none none none",
+				},
+				x: 400,
+				rotation: 360,
+				durtaion: 3,
+				markers: true,
 			});
 		</script>
 	</body>
