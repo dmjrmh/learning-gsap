@@ -20,7 +20,11 @@
 		<script>
 			gsap.registerPlugin(ScrollTrigger);
 			gsap.to(".box-c", {
-				scrollTrigger: ".box-c",
+				scrollTrigger: {
+					trigger: ".box-c",
+					// toggle actions available => play, pause, resume, restart, reverse, reset, complete, none
+					toggleActions: "restart none none none",
+				},
 				x: 400,
 				rotation: 360,
 				durtaion: 3,
